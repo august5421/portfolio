@@ -1,0 +1,17 @@
+html {
+   overflow: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+.css-11u3b1d-MuiSpeedDial-root .MuiSpeedDial-actions {
+    padding-top: 40px !important;
+}
+.css-7dv1rb-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab {
+    background-color: #268EB9 !important;
+    width: 40px  !important;
+    height: 40px  !important;
+}
+  
+  

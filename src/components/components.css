@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'LogoFont';
+    src: local('LogoFont'), url(/assets/fonts/main.ttf) format('opentype');
+}
+.cursorBlink {
+    animation: cursor-blink-animation 0.8s infinite; 
+  }
+  
+  @keyframes cursor-blink-animation {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  
