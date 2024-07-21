@@ -2,6 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Fade, SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
 import { GitHub, LinkedIn, Mail, Description } from '@mui/icons-material';
+import resumePrintable from '../assets/pdfs/Resume.pdf';
+import IconButton from '@mui/material/IconButton';
+import ObfuscatedEmail from './ObfuscateEmail';
 
 const WidgetBar = () => {
   const theme = useSelector((state) => state.theme);
@@ -40,10 +43,9 @@ const WidgetBar = () => {
   };
 
   const handleResumeClick = () => {
-    var file_path = '../assets/pdfs/resume.pdf';
     var a = document.createElement('A');
-    a.href = file_path;
-    a.download = file_path.substr(file_path.lastIndexOf('/') + 1);
+    a.href = resumePrintable;
+    a.download = resumePrintable.substr(resumePrintable.lastIndexOf('/') + 1);
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -53,7 +55,7 @@ const WidgetBar = () => {
     { icon: <Description />, name: 'Resume', action: handleResumeClick },
     { icon: <GitHub />, name: 'GitHub', action: handleGithubClick },
     { icon: <LinkedIn />, name: 'LinkedIn', action: handleLinkedInClick },
-    { icon: <Mail />, name: 'Gmail', action: handleMailClick },
+    { icon: <IconButton ><ObfuscatedEmail mode="speedDial" encodedEmail='&#097;&#117;&#103;&#117;&#115;&#116;&#097;&#115;&#104;&#116;&#111;&#110;&#098;&#114;&#111;&#119;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;' /></IconButton >, name: 'Gmail'},
   ];
 
   return (
@@ -73,12 +75,21 @@ const WidgetBar = () => {
         direction={isMobile ? "down" : 'up'}
         >
         {actions.map((action) => (
-            <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            tooltipTitle={action.name}
-            onClick={action.action}
-            />
+            action.name === 'Gmail' ? (
+              <SpeedDialAction
+                key={action.name}
+                icon={action.icon}
+                tooltipTitle={action.name}
+              />
+            ) : (
+              <SpeedDialAction
+                key={action.name}
+                icon={action.icon}
+                tooltipTitle={action.name}
+                onClick={action.action}
+              />
+            )
+            
         ))}
         </SpeedDial>
     </Fade>

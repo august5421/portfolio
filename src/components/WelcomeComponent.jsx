@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 import LogoFont from './LogoFont';
 import useTypewriter from './useTypewriter';
 import { Tooltip } from '@mui/material';
+import resumePrintable from '../assets/pdfs/Resume.pdf' ;
+import ObfuscatedEmail from './ObfuscateEmail';
 
 const WelcomeComponent = (props) => {
   const theme = useSelector((state) => state.theme);
@@ -34,13 +36,6 @@ const WelcomeComponent = (props) => {
 
   const typedSkillset = useTypewriter(skillsets, 100, 50, 2000);
 
-  const obfuscateEmail = (email) => {
-    const obfuscated = email.replace(/[a-zA-Z]/g, (c) => {
-      return Math.random() > 0.5 ? c : `&#${c.charCodeAt(0)};`;
-    });
-    return `<a href="mailto:${obfuscated}">${obfuscated}</a>`;
-  };
-
   const handleGithubClick = () => {
     window.open('https://github.com/august5421?tab=repositories', '_blank');
   };
@@ -50,18 +45,12 @@ const WelcomeComponent = (props) => {
   };
 
   const handleResumeClick = () => {
-    var file_path = '../assets/pdfs/resume.pdf';
     var a = document.createElement('A');
-    a.href = file_path;
-    a.download = file_path.substr(file_path.lastIndexOf('/') + 1);
+    a.href = resumePrintable;
+    a.download = resumePrintable.substr(resumePrintable.lastIndexOf('/') + 1);
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-  };
-
-  const handleMailClick = () => {
-    const obfuscatedEmail = obfuscateEmail('augustashtonbrown@gmail.com');
-    alert(`Click OK to copy the obfuscated email: ${obfuscatedEmail}`);
   };
 
   return (
@@ -99,12 +88,11 @@ const WelcomeComponent = (props) => {
                 <GitHubIcon fontSize="large" style={{color: theme.secondary}} />
             </IconButton >
           </Tooltip>
-          <Tooltip title="Email">
-            <IconButton  onClick={handleMailClick} >
-                <EmailIcon fontSize="large" style={{color: theme.secondary}} />
+          
+            <IconButton >
+                <ObfuscatedEmail encodedEmail='&#097;&#117;&#103;&#117;&#115;&#116;&#097;&#115;&#104;&#116;&#111;&#110;&#098;&#114;&#111;&#119;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;' />
             </IconButton >
           
-          </Tooltip>
           <Tooltip title="LinkedIn">
             <IconButton  onClick={handleLinkedInClick} >
                 <LinkedInIcon fontSize="large" style={{color: theme.secondary}} />
@@ -116,9 +104,6 @@ const WelcomeComponent = (props) => {
             </IconButton >
           </Tooltip>
         </Box>
-      </Box>
-      <Box style={{ display: 'flex', flexDirection: 'column', flex: 1, alignItems: isMobile && 'center', justifyContent: 'center'}}>
-        pisrjmnfg
       </Box>
     </Box>
   );
