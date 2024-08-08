@@ -111,7 +111,7 @@ const freelanceProjects = [
     The Contact Page is equipped with emailJS for client-side mailing, facilitating smooth communication between users and the organization. Additionally, it incorporates Google reCAPTCHA for enhanced spam protection, ensuring that all interactions remain secure.
 
     Behind the scenes, a custom-built CMS backend provides a robust management system for the site. This password-protected admin panel allows users to manage various aspects of the site, including altering site colors, updating the logo, and managing active and inactive pages. It also supports CRUD operations for blog posts and gallery images, and enables editing of homepage content. The combination of these features ensures that the site remains flexible and easy to maintain, meeting the evolving needs of The Dance & Movement Workshop.`,
-    link: "https://august5421.github.io/TheDanceAndMovementWorkshop/",
+    link: "https://thedanceandmovementworkshop.com/",
     image: TDAMWimg
   },
 ];
